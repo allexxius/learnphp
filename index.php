@@ -17,11 +17,8 @@ class Box {
 }
 
 $box1 = new Box(10, 20, 15);
-
-var_dump($box1);
-var_dump($box1->volume());
-
-$box2 = new Box(4, 5, 6);
-
-var_dump($box2);
-var_dump($box2->volume());
+$box1->width = 25;
+$box2 = clone $box1;
+$box2->width = 50;
+var_dump($box1->width);
+var_dump($box1, $box2);
