@@ -1,18 +1,37 @@
 <?php
 
-$bool = true && false;
-$bool = true || false;
-$bool = !false;
-$bool = (true && false || false) && !(true || false && true);
-$bool = 10 > 5;
-$bool = 10 < 5;
-$bool = 10 > 10;
-$bool = 10 < 10;
-$bool = 10 == 10;
-$bool = 10 >= 10;
-$bool = 10 <= 10;
-$bool = 10 == '10';
-$bool = 10 === '10';
-$bool = 10 !== '10';
-$bool = 10 != '10';
-var_dump($bool);
+$num = 15;
+if($num > 10){
+    var_dump('suurem');
+} else if ($num < 10){
+
+} else {
+
+}
+
+$day = date('w', strtotime('09.09.2025'));
+var_dump($day);
+
+switch($day){
+    case 1:
+        var_dump('esmaspäev');
+        break;
+    case 2:
+        var_dump('teisipäev');
+        break;
+    case 3:
+        var_dump('kolmapäev');
+        break;
+    case 4:
+        var_dump('neljapäev');
+        break;
+    case 5:
+        var_dump('reede');
+        break;
+    case 6:
+        var_dump('laupäev');
+        break;
+    case 7:
+        var_dump('pühapäev');
+        break;
+}
