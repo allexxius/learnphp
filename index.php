@@ -1,38 +1,55 @@
 <?php
 
-class Box {
-    private $width;
-    protected $height;
-    private $length;
+class Cat {
+    use Colorful;
+}
 
-    public function __construct($w=0, $h=0, $l=0) {
+class Box {
+    use Colorful;
+    private $width;
+    protected $heigth;
+    private $length;
+    
+    public static $count = 0;
+
+
+    public static function test(){
+        //var_dump($this->width);
+        var_dump(static::class);
+    }
+
+    public function __construct($w=0, $h=0, $l=0)
+    {   
+        self::$count++;
         $this->width = $w;
-        $this->height = $h;
+        $this->heigth = $h;
         $this->length = $l;
     }
 
-    public function getWidth() {
+    public function getWidth(){
         return $this->width;
     }
 
-    public function setWidth($width) {
-        if($width > 0 && is_numeric($width)) {
+    public function setWidth($width){
+        if($width > 0 && is_numeric($width)){
             $this->width = $width;
         } else {
-            throw new Exception("you are stupid dumbass");
+            throw new Exception('You are stupid dumbass');
         }
+
+        
     }
 
-    public function volume() {
-        return $this->width * $this->height * $this->length;
+    public function volume(){
+        return $this->width * $this->heigth * $this->length;
     }
 }
 
 class MetalBox extends Box {
-    public $material = 'metal';
-    public $massPerUnit = 2;
-
-    public function changeWidth() {
+    public $material = 'metal🤘';
+    public $massPerUnit = 2; 
+    
+    public function changeWidth(){
         $this->width = 333;
     }
 
@@ -41,12 +58,33 @@ class MetalBox extends Box {
     }
 }
 
-$metalBox = new MetalBox(10, 20, 15);
-//$metalBox->width = 'cool value';
-$metalBox->setWidth(100);
-// $metalBox->width = 100;
-// $metalBox->changeWidth();
-// var_dump($metalBox->width);
+trait Colorful {
+    private $color;
+
+    public function setColor($color){
+        $this->color = $color;
+    }
+    public function getColor(){
+        return $this->color;
+    }
+}
+
+
+$metalBox = new Box(2,3,4);
+
+$box2 = new Box(2,4,5);
+Box::test();
+MetalBox::test();
+var_dump(Box::$count, Box::$count);
+
+
+
+//$metalBox->width = 'Cool value';
+$metalBox->setWidth(12);
+//$metalBox->width = 123;
+//$metalBox->changeWidth();
+//var_dump($metalBox->width);
+
 var_dump($metalBox);
 var_dump($metalBox->volume());
-var_dump($metalBox->mass());
+//var_dump($metalBox->mass());
